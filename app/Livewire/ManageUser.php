@@ -95,6 +95,12 @@ class ManageUser extends Component
         $user->roles()->sync($this->userForm['roles']);
 
         $this->reset('userForm');
+
+        $this->dispatch('swal', [
+            'icon' => 'success',
+            'title' => '¡Usuario creado!',
+            'text' => 'El usuario se ha creado correctamente.',
+        ]);
     }
 
     public function edit(User $user)
@@ -131,11 +137,23 @@ class ManageUser extends Component
 
         $this->reset('userForm');
 
+        $this->dispatch('swal', [
+            'icon' => 'success',
+            'title' => '¡Usuario actualizado!',
+            'text' => 'El usuario se ha actualizado correctamente.',
+        ]);
+
     }
 
     public function delete(User $user)
     {
         $user->delete();
+
+        $this->dispatch('swal', [
+            'icon' => 'success',
+            'title' => '¡Usuario eliminado!',
+            'text' => 'El usuario se ha eliminado correctamente.',
+        ]);
     }
 
     public function render()

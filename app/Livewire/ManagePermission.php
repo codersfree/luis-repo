@@ -53,11 +53,16 @@ class ManagePermission extends Component
         Permission::create($this->permissionForm);
 
         $this->reset('permissionForm');
+
+        $this->dispatch('swal', [
+            'icon' => 'success',
+            'title'   => '¡Permiso creado!',
+            'text' => 'El permiso se ha creado correctamente.',
+        ]);
     }
 
     public function edit(Permission $permission)
     {
-
         $this->permissionId = $permission->id;
 
         $this->permissionForm = [
@@ -76,12 +81,24 @@ class ManagePermission extends Component
 
         $this->reset('permissionForm');
 
+        $this->dispatch('swal', [
+            'icon' => 'success',
+            'title'   => '¡Permiso actualizado!',
+            'text' => 'El permiso se ha actualizado correctamente.',
+        ]);
+
     }
 
 
     public function delete(Permission $permission)
     {
         $permission->delete();
+
+        $this->dispatch('swal', [
+            'icon' => 'success',
+            'title'   => '¡Permiso eliminado!',
+            'text' => 'El permiso se ha eliminado correctamente.',
+        ]);
     }
 
     public function render()

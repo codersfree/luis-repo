@@ -65,6 +65,12 @@ class ManageRole extends Component
         $role->permissions()->sync($this->roleForm['permissions']);
 
         $this->reset('roleForm');
+
+        $this->dispatch('swal', [
+            'icon' => 'success',
+            'title'   => '¡Rol creado!',
+            'text' => 'El rol se ha creado correctamente.',
+        ]);
     }
 
     public function edit(Role $role)
@@ -91,11 +97,23 @@ class ManageRole extends Component
 
         $this->reset('roleForm');
 
+        $this->dispatch('swal', [
+            'icon' => 'success',
+            'title'   => '¡Rol actualizado!',
+            'text' => 'El rol se ha actualizado correctamente.',
+        ]);
+
     }
 
     public function delete(Role $role)
     {
         $role->delete();
+
+        $this->dispatch('swal', [
+            'icon' => 'success',
+            'title'   => '¡Rol eliminado!',
+            'text' => 'El rol se ha eliminado correctamente.',
+        ]);
     }
 
     public function render()
