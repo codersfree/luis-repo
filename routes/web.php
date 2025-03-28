@@ -16,17 +16,25 @@ Route::middleware(['auth'])->group(function () {
         ->middleware(['verified'])
         ->name('dashboard');
 
-    Route::get('users', ManageUser::class)
+    /* Route::get('users', ManageUser::class)
+        ->middleware(['can:read user'])
+        ->name('users'); */
+
+    Route::view('users', 'users')
         ->middleware(['can:read user'])
         ->name('users');
 
-    Route::get('roles', ManageRole::class)
+    Route::view('roles', 'roles')
         ->middleware(['can:read role'])
         ->name('roles');
 
-    Route::get('permissions', ManagePermission::class)
+    Route::view('permissions', 'permissions')
         ->middleware(['can:read permission'])
         ->name('permissions');
+
+    Route::view('menu', 'menu')
+        /* ->middleware(['can:read permission']) */
+        ->name('menu');
 
     Route::redirect('settings', 'settings/profile');
 

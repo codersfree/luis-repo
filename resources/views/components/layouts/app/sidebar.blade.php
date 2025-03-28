@@ -11,24 +11,7 @@
                 <x-app-logo />
             </a>
 
-            <flux:navlist variant="outline">
-                <flux:navlist.group :heading="__('Platform')" class="grid">
-                    <flux:navlist.item icon="home" :href="route('dashboard')" :current="request()->routeIs('dashboard')" wire:navigate>{{ __('Dashboard') }}</flux:navlist.item>
-
-                    @can('read user')
-                        <flux:navlist.item icon="users" :href="route('users')" :current="request()->routeIs('users')" wire:navigate>Usuarios</flux:navlist.item>
-                    @endcan
-
-                    @can('read role')
-                        <flux:navlist.item icon="user-plus" :href="route('roles')" :current="request()->routeIs('roles')" wire:navigate>Roles</flux:navlist.item>
-                    @endcan
-
-                    @can('read permission')
-                        <flux:navlist.item icon="shield-exclamation" :href="route('permissions')" :current="request()->routeIs('permissions')" wire:navigate>Permisos</flux:navlist.item>
-                    @endcan
-
-                </flux:navlist.group>
-            </flux:navlist>
+            @livewire('navigation')
 
             <flux:spacer />
 

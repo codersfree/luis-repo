@@ -1,5 +1,10 @@
 <div>
 
+    <flux:breadcrumbs class="mb-8">
+        <flux:breadcrumbs.item href="{{route('dashboard')}}">Dashboard</flux:breadcrumbs.item>
+        <flux:breadcrumbs.item>Usuarios</flux:breadcrumbs.item>
+    </flux:breadcrumbs>
+
     <div class="flex justify-between">
 
         <div class="w-64">

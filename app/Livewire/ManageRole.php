@@ -36,8 +36,23 @@ class ManageRole extends Component
 
     public function rules()
     {
+
+        if ($this->roleId) {
+            return [
+                'roleForm.name' => 'required|string|unique:roles,name,' . $this->roleId,
+            ];
+        }
+
         return [
-            'roleForm.name' => 'required|string',
+            'roleForm.name' => 'required|string|unique:roles,name',
+        ];
+
+    }
+
+    public function validationAttributes()
+    {
+        return [
+            'roleForm.name' => 'nombre',
         ];
     }
 

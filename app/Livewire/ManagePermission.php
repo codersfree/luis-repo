@@ -8,6 +8,8 @@ use Spatie\Permission\Models\Permission;
 class ManagePermission extends Component
 {
 
+    public $title="Prueba";
+
     public $search;
 
     public $permissionId;
@@ -28,6 +30,13 @@ class ManagePermission extends Component
     {
         return [
             'permissionForm.name' => 'required|string',
+        ];
+    }
+
+    public function validationAttributes()
+    {
+        return [
+            'permissionForm.name' => 'nombre',
         ];
     }
 
