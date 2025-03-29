@@ -3,6 +3,8 @@
 namespace App\Livewire;
 
 use App\Models\Item;
+use App\Models\SubItem;
+use Livewire\Attributes\On;
 use Livewire\Component;
 
 class ManageMenu extends Component
@@ -116,6 +118,20 @@ class ManageMenu extends Component
         }
 
         $this->getItems();
+
+        $this->dispatch('menuUpdated');
+    }
+
+    #[On('sortSubItems')]
+    public function sortSubItems($sorts, $itemId)
+    {
+        foreach ($sorts as $position => $subItemId) {
+
+            SubItem::find($subItemId)->update([
+                'position' => $position + 1,
+                'item_id' => $itemId
+            ]);
+        }
 
         $this->dispatch('menuUpdated');
     }

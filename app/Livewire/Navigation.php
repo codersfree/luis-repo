@@ -18,7 +18,8 @@ class Navigation extends Component
     #[On('menuUpdated')]
     public function getItems()
     {
-        $this->items = Item::orderBy('order')
+        $this->items = Item::with('subItems')
+            ->orderBy('order')
             ->get();
     }
 

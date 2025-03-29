@@ -84,7 +84,7 @@
                                 
                         @endif
 
-                        <div>
+                        <div class="mt-4">
                             @livewire('manage-submenu', [
                                 'item' => $item,
                                 'subItems' => $item->subItems
